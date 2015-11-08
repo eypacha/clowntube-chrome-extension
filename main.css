@@ -256,21 +256,3 @@ table.body-wrap,
 .column tr td {
   padding: 15px
 }
-
-#currentLink {
-  background:#fff8ad;
-  -webkit-border-radius: 5px;
-  border-radius: 5px;
-  border: 1px solid silver;
-  margin-top:5px;
-  padding:5px;
-  text-align:center;
-  display:none;
-  cursor: pointer;
-  color:black;
-  font-weight:bold;
-}
-
-#currentLink:hover {
-  color: #B70000;
-}
