@@ -3,7 +3,8 @@
 
 Instala el último release desde el [Chrome Web Store](https://chrome.google.com/webstore/detail/clowntube/hclphgckmgbdfncancceojemgmjodblp)
 
-![Screenshot](https://lh3.googleusercontent.com/fO0LieBlQkRx4g1talbu5PSQLXVKBvoiY-xBJoEMaX_X_haR7fO5RXRoBUiB0D-brhdpAj8N=s640-h400-e365-rw)
+![Screenshot](https://lh3.googleusercontent.com/2uczkTl3dOoV7FPXkiqIhTRNQBSJNQD9Ho2IIrRBUuZuQ9kVYJmlAmsAupAvlBdoweB1oNhGjA=s640-h400-e365-rw)
+
 
 # Características 
 + Últimos 10 videos del sitio
