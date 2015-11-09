@@ -26,14 +26,14 @@
    if (resultado != null){
 	titulo = tabs[0].title;
 	titulo = titulo.slice(0,titulo.length-10);
-	videoHost = "http://www.youtube.com/watch?v=";
+	videoHost = encodeURIComponent("http://www.youtube.com/watch?v=");
 	document.getElementById("currentLink").style.display = "block";
    } else {
 	resultado = direccion.match("(?:https?(?:a|vh?)?://)?(?:www.)?vimeo.com/([A-Za-z0-9-_]+)");
 	if (resultado != null){
         titulo = tabs[0].title;
 	titulo = titulo.slice(0,titulo.length-9);
-	videoHost = "http://vimeo.com/";
+	videoHost = encodeURIComponent("http://vimeo.com/");
 	document.getElementById("currentLink").style.display = "block";
 	}
    }
@@ -43,6 +43,7 @@
      document.getElementById("currentLink").onclick = function()
    {
        alert('[URL]\n'+ videoHost + resultado[1] + '\n\n[TITULO]\n' + titulo);
+       chrome.tabs.create({url : "http://clowntube.tv/publish?url=" + videoHost + resultado[1] + "&title=" + titulo});
    }
 
     };
