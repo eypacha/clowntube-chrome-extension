@@ -42,7 +42,6 @@
 });
      document.getElementById("currentLink").onclick = function()
    {
-       alert('[URL]\n'+ videoHost + resultado[1] + '\n\n[TITULO]\n' + titulo);
        chrome.tabs.create({url : "http://clowntube.tv/publish?url=" + videoHost + resultado[1] + "&title=" + titulo});
    }
 
