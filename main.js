@@ -21,21 +21,28 @@
       });
     chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
     
-   var direccion = tabs[0].url
+   var direccion = tabs[0].url;
    resultado = direccion.match("(?:https?(?:a|vh?)?://)?(?:www.)?youtube(?:-nocookie)?.com/watch?.*v=([A-Za-z0-9-_]+)");
    if (resultado != null){
 	var hostTit = 10;
 	videoHost = "yt";
+	chrome.tabs.executeScript({code: 'x = document.getElementById("eow-description").innerHTML; x'},
+	function(x){descripcion = x});
    } else {
 	resultado = direccion.match("(?:https?(?:a|vh?)?://)?(?:www.)?vimeo.com/([A-Za-z0-9-_]+)");
 	if (resultado != null){
             var hostTit = 9;
 	    videoHost = "vm";
+	    chrome.tabs.executeScript({code: 'x = document.getElementsByClassName("js-clip_description")[0].innerHTML; x'},
+	    function(x){descripcion = x});
+	
 	} else {
 	resultado = direccion.match("(?:https?://)?(?:www.)?dailymotion.com/video/([A-Za-z0-9]+)");
 	if (resultado != null){
             var hostTit = 20;
 	    videoHost = "dy";
+	    chrome.tabs.executeScript({code: 'x = document.getElementById("video_description").innerHTML; x'},
+	    function(x){descripcion = x});
 	}
     }
    } 
@@ -44,12 +51,15 @@
 	titulo = titulo.slice(0,titulo.length-hostTit);
 	document.getElementById("currentLink").style.display = "block";
    }
+    
 
    
 });
      document.getElementById("currentLink").onclick = function()
    {
-       chrome.tabs.create({url : "http://clowntube.tv/publish?h=" + videoHost + "&i=" + resultado[1] + "&t=" + titulo});
+	descripcion = descripcion.toString().replace(/<br[^>]*>?/g, '\n');
+	descripcion = descripcion.toString().replace(/<[^>]*>?/g, '').trim();
+	chrome.tabs.create({url : "http://clowntube.tv/publish?h=" + videoHost + "&i=" + resultado[1] + "&t=" + titulo + "&d=" + descripcion});
    }
 
     };
